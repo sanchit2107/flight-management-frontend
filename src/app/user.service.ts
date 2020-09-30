@@ -30,7 +30,6 @@ export class UserService {
     return this.http
       .post<any>(this.baseUrl + "/userLogin", JSON.stringify(user), this.options)
       .pipe(catchError(this.errorHandler));
-    // throwError('error message');
   }
 
   errorHandler(error:HttpErrorResponse) {
