@@ -122,5 +122,8 @@
       }
     }
   },
-  "defaultProject": "FlightManagement-Frontend"
+  "defaultProject": "FlightManagement-Frontend",
+  "cli": {
+    "analytics": false
+  }
 }
