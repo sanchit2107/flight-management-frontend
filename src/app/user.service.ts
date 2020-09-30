@@ -9,6 +9,11 @@ import { catchError } from "rxjs/operators";
 export class UserService {
   constructor(private http: HttpClient) {}
 
+
+  /*
+  *  **********change base url according to your server**************
+  */
+
   private baseUrl = "http://localhost:8086/user";
 
   httpHeaders = new HttpHeaders({
