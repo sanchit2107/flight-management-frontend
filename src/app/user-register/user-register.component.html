@@ -1,0 +1,105 @@
+<div class="container">
+    <h1 align="center">User Registration</h1>
+    
+    <div class="jumbotron" style="padding-bottom: 5%;">
+
+        <form class = "form-group" [formGroup]="userRegisterForm" (ngSubmit) = "submit()">
+
+            <!------------ userName------- -->
+
+            <div class="row">
+                <div class="col-6">
+                    <div *ngIf="userRegisterForm.get('userName').invalid && userRegisterForm.get('userName').touched">
+                        <small class="text-danger">*Field mandatory</small>
+                    </div>
+                    <label > name: </label>
+                </div>
+                <div class="col-6">
+                    <input [class.is-invalid]="userRegisterForm.get('userName').invalid && userRegisterForm.get('userName').touched" type="text" class="form-control" formControlName = "userName" />
+                </div>
+            </div><br>
+
+            <!------------ email--------- -->
+
+            <div class="row">
+                <div class="col-6">
+                    <div *ngIf="userRegisterForm.get('email').invalid && userRegisterForm.get('email').touched">
+                        <small class="text-danger">*Field mandatory</small>
+                    </div>
+                    <label > email: </label>
+                </div>
+                <div class="col-6">
+                    <input [class.is-invalid]="userRegisterForm.get('email').invalid && userRegisterForm.get('email').touched" type="text" class="form-control" formControlName = "email" />
+                </div>
+            </div><br>
+
+
+            <!--------- phone number ----------- -->
+
+            <div class="row">
+                <div class="col-6">
+                    <div *ngIf="userRegisterForm.get('phone').invalid && userRegisterForm.get('phone').touched">
+                        
+                        <div *ngIf="userRegisterForm.get('phone').errors?.required">
+                            <small class="text-danger">*Field mandatory</small>
+                        </div>
+
+                        <div *ngIf="userRegisterForm.get('phone').errors?.pattern">
+                            <small class="text-danger">*invalid number</small>
+                        </div>
+
+                    </div>
+                    <label >Phone Number: </label>
+
+                </div>
+                <div class="col-6 input-group">
+                    <div class="input-group-prepend">
+                        <div class="input-group-text">
+                            <span>+91</span>
+                        </div>
+                    </div>
+                    <input [class.is-invalid]="userRegisterForm.get('phone').invalid && userRegisterForm.get('phone').touched" type="number" class="form-control" formControlName="phone" />
+                </div>
+
+            </div> <br>
+
+
+            <!----------- password -------------->
+
+            <div class="row">
+            <div class="col-6">
+                <div *ngIf="userRegisterForm.get('password').invalid && userRegisterForm.get('password').touched">
+                    <div *ngIf="userRegisterForm.get('password').errors?.required" >
+                        <small class="text-danger">*Field mandatory</small>
+                    </div>
+                    <div *ngIf="userRegisterForm.get('password').errors?.minlength">
+                        <small class="text-danger">*password must be minimum 8 characters</small>
+                    </div>
+                </div>
+                <label >password:</label>
+            </div>
+            <div class="col-6"><input [class.is-invalid]="userRegisterForm.get('password').invalid && userRegisterForm.get('password').touched" type="password" class="form-control" formControlName= "password"/></div>
+        </div><br>
+
+        <!----------------- confirm password------------ -->
+        <div class="row">
+            <div class="col-6">
+                <div *ngIf="userRegisterForm.errors?.mismatch">  
+                    <small class="text-danger">*mismatch</small>
+                </div>
+                <label >Confirm password:</label>
+            </div>
+            <div class="col-6"><input [class.is-invalid]="userRegisterForm.errors?.mismatch" type="password" class="form-control" formControlName="confirmPassword" /></div>
+        </div><br>
+
+        <div align="center">
+            <input [disabled] = "!userRegisterForm.valid" type="submit" class="btn btn-primary"  value="Register">
+        </div><br>
+
+        </form>
+
+
+    </div>
+
+
+</div>
