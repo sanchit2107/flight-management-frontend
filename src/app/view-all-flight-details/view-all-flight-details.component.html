@@ -16,6 +16,7 @@
           <th>Departure Time</th>
           <th>Flight Vendor</th>
           <th>Ticket Price</th>
+          <th>Actions</th>
         </tr>
       </thead>
       <tbody>
@@ -31,7 +32,7 @@
           <td>{{flight.flightVendor}}</td>
           <td>{{flight.price}}</td>
           <td><button (click)="removeFlight(flight.flightNo)" class="btn btn-danger">Delete</button>
-              <button (click)="modifyFlight(flight.flightNo)" class="btn btn-info" style="margin-left: 10px">Update</button>
+              <button (click)="modifyFlight(flight)" class="btn btn-info" style="margin-left: 10px">Update</button>
           </td>
         </tr>
       </tbody>
