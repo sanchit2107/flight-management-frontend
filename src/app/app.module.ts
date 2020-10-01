@@ -13,6 +13,8 @@ import { AdminHomeComponent } from "./admin-home/admin-home.component";
 import { AdminLoginComponent } from './admin-login/admin-login.component';
 import { UserHomeComponent } from './user-home/user-home.component';
 import { ShowUserBookingsComponent } from './show-user-bookings/show-user-bookings.component';
+import { ViewUserDetailsComponent } from './view-user-details/view-user-details.component';
+import { UpdateUserDetailsComponent } from './update-user-details/update-user-details.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +26,8 @@ import { ShowUserBookingsComponent } from './show-user-bookings/show-user-bookin
     AdminLoginComponent,
     UserHomeComponent,
     ShowUserBookingsComponent,
+    ViewUserDetailsComponent,
+    UpdateUserDetailsComponent,
   ],
   imports: [
     FormsModule,

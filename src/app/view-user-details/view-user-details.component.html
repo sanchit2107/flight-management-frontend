@@ -1,0 +1,57 @@
+<div class="container">
+
+    <div align="center">
+        <h1>User Details</h1>
+    </div><br><br>
+
+    <div class="row" align="center">
+        <div class="col-6">
+            <button class="btn btn-primary" routerLink="/userHome" >home</button>
+        </div>
+
+        <div class="col-6">
+            <button class="btn btn-primary" (click) = "logout()">
+                logout
+            </button>
+        </div>
+    </div><br><br>
+
+    <div class="jumbotron" align="left" *ngIf="user" >
+        <div class="row">
+            <div class="col-6">
+                <h4>User ID:</h4>
+            </div>
+            <div class="col-6">
+                <h4>{{user.userId}}</h4>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-6">
+                <h4>User name:</h4>
+            </div>
+            <div class="col-6">
+                <h4>{{user.userName}}</h4>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-6">
+                <h4>Phone:</h4>
+            </div>
+            <div class="col-6">
+                <h4>{{user.phone}}</h4>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-6">
+                <h4>email:</h4>
+            </div>
+            <div class="col-6">
+                <h4>{{user.email}}</h4>
+            </div>
+        </div>
+    </div>
+
+</div>

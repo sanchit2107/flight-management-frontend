@@ -4,9 +4,11 @@ import { AdminHomeComponent } from "./admin-home/admin-home.component";
 import { AdminLoginComponent } from "./admin-login/admin-login.component";
 import { ErrorComponent } from "./error/error.component";
 import { ShowUserBookingsComponent } from "./show-user-bookings/show-user-bookings.component";
+import { UpdateUserDetailsComponent } from "./update-user-details/update-user-details.component";
 import { UserHomeComponent } from "./user-home/user-home.component";
 import { UserLoginComponent } from "./user-login/user-login.component";
 import { UserRegisterComponent } from "./user-register/user-register.component";
+import { ViewUserDetailsComponent } from "./view-user-details/view-user-details.component";
 
 const routes: Routes = [
   { path: "", redirectTo: "/userLogin", pathMatch: "full" },
@@ -17,6 +19,8 @@ const routes: Routes = [
   { path: "adminLogin", component: AdminLoginComponent },
   { path: "userHome", component: UserHomeComponent },
   { path: "getBookingByUser/:userId", component: ShowUserBookingsComponent },
+  { path: "viewUser", component: ViewUserDetailsComponent },
+  { path: "updateUser", component: UpdateUserDetailsComponent },
 ];
 
 @NgModule({
