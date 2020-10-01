@@ -52,9 +52,9 @@ export class UserRegisterComponent implements OnInit {
     this.userService.addUser(this.userRegisterForm.value).subscribe(
       data => {
         this.userData = data;
-        console.log(this.userData);
         localStorage.setItem("userId",this.userData.userId);
         console.log(localStorage.getItem("userId"));
+        this.router.navigate(["/userHome"]);
       },
       error => {
         this.router.navigate(["/error","invalid data provided or unable to connect"]);

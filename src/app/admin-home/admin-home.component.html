@@ -2,6 +2,7 @@
     <div class="col-sm-10 text-left bg-white rounded shadow py-13">
         <div class="p-3 mb-2 bg-success text-white">
             <h1>WELCOME ADMIN</h1>
+            <button class="btn btn-primary float-right" (click)="logout()" >Logout</button>
             <div *ngIf="adminDetails">
                 <small>id: {{adminDetails.adminId}}</small><br>
                 <small>name: {{adminDetails.adminName}}</small>

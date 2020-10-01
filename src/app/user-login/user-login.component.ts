@@ -34,6 +34,7 @@ export class UserLoginComponent implements OnInit {
         this.failure.value = false;
         console.log(this.userData.userId);
         localStorage.setItem("userId",this.userData.userId);
+        this.router.navigate(["/userHome"]);
       },
       (error) => {
         this.failure.value = true;
