@@ -1,0 +1,40 @@
+<div class="panel panel-primary">
+  <div class="panel-heading">
+    <h2>List of Flights</h2>
+  </div>
+  <div class="panel-body">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Flight Number</th>
+          <th>Source Airport</th>
+          <th>Destination Airport</th>
+          <th>Available Seats</th>
+          <th>Departure Date</th>
+          <th>Arrival Date</th>
+          <th>Arrival Time</th>
+          <th>Departure Time</th>
+          <th>Flight Vendor</th>
+          <th>Ticket Price</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let flight of flights|async">
+          <td>{{flight.flightNo}}</td>
+          <td>{{flight.sourceAirport}}</td>
+          <td>{{flight.destinationAirport}}</td>
+          <td>{{flight.availableSeats}}</td>
+          <td>{{flight.departureDate}}</td>
+          <td>{{flight.arrivalDate}}</td>
+          <td>{{flight.arrivalTime}}</td>
+          <td>{{flight.departureTime}}</td>
+          <td>{{flight.flightVendor}}</td>
+          <td>{{flight.price}}</td>
+          <td><button (click)="removeFlight(flight.flightNo)" class="btn btn-danger">Delete</button>
+              <button (click)="modifyFlight(flight.flightNo)" class="btn btn-info" style="margin-left: 10px">Update</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
