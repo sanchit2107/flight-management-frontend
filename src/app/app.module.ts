@@ -9,9 +9,10 @@ import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { HttpClientModule } from "@angular/common/http";
 import { UserLoginComponent } from './user-login/user-login.component';
 import { ErrorComponent } from './error/error.component';
+import { AddPassengerComponent } from './add-passenger/add-passenger.component';
 
 @NgModule({
-  declarations: [AppComponent, UserRegisterComponent, UserLoginComponent, ErrorComponent],
+  declarations: [AppComponent, UserRegisterComponent, UserLoginComponent, ErrorComponent, AddPassengerComponent],
   imports: [
     FormsModule,
     ReactiveFormsModule,

@@ -1,0 +1,92 @@
+
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+</head>
+<div class="container">
+
+        <h3>ADD PASSENGER</h3>
+
+    <form #userForm="ngForm" (ngSubmit)='onSubmit(userForm.value)'>
+
+        <div class="form-group">
+
+            <label>PASSENGER ID: </label>
+
+            <input required minlength="1" type="number" #id='ngModel' name="id" ngModel class="form-control">
+
+            <div *ngIf='id.errors && id.touched' class="alert alert-danger">
+
+                <div [hidden]='!id.errors.required'> Provide Passenger Id </div>
+
+            </div>
+        </div>
+
+
+
+        <div class="form-group">
+
+            <label>NAME: </label>
+
+            <input required minlength="1" type="text" #name='ngModel' name="name" ngModel class="form-control">
+
+            <div *ngIf='name.errors
+                        && name.touched' class="alert alert-danger">
+
+                <div [hidden]='!name.errors.required'>
+
+                    Provide Name
+
+                </div>
+
+            </div>
+
+        </div>
+
+        
+        <div class="form-group">
+
+            <label>AGE </label>
+
+            <input required minlength="1" type="number" #age='ngModel' name="age" ngModel
+                class="form-control">
+
+            <div *ngIf='age.errors
+                        && age.touched' class="alert alert-danger">
+
+                <div [hidden]='!age.errors.required'>
+
+                    Provide Age
+
+                </div>
+
+            </div>
+
+        </div>
+        <div class="form-group">
+
+            <label>LUGGAGE </label>
+
+            <input required minlength="1" type="number" #luggage='ngModel' name="luggage" ngModel
+                class="form-control">
+
+            <div *ngIf='luggage.errors
+                        && luggage.touched' class="alert alert-danger">
+
+                <div [hidden]='!luggage.errors.required'>
+
+                    Provide Luggage
+
+                </div>
+
+            </div>
+
+        </div>
+        <input [disabled]="userForm.invalid" type="submit" value="Add Passenger" class="btn btn-primary">
+
+    </form>
+
+</div>
+<div>
+    <h2>{{message}}</h2>
+</div>
