@@ -9,9 +9,11 @@ import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { HttpClientModule } from "@angular/common/http";
 import { UserLoginComponent } from './user-login/user-login.component';
 import { ErrorComponent } from './error/error.component';
+import { AddFlightDetailsComponent } from './add-flight-details/add-flight-details.component';
+import { ViewAllFlightDetailsComponent } from './view-all-flight-details/view-all-flight-details.component';
 
 @NgModule({
-  declarations: [AppComponent, UserRegisterComponent, UserLoginComponent, ErrorComponent],
+  declarations: [AppComponent, UserRegisterComponent, UserLoginComponent, ErrorComponent, AddFlightDetailsComponent, ViewAllFlightDetailsComponent],
   imports: [
     FormsModule,
     ReactiveFormsModule,
