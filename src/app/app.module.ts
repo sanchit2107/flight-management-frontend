@@ -11,6 +11,8 @@ import { UserLoginComponent } from "./user-login/user-login.component";
 import { ErrorComponent } from "./error/error.component";
 import { AdminHomeComponent } from "./admin-home/admin-home.component";
 import { AdminLoginComponent } from './admin-login/admin-login.component';
+import { UserHomeComponent } from './user-home/user-home.component';
+import { ShowUserBookingsComponent } from './show-user-bookings/show-user-bookings.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +22,8 @@ import { AdminLoginComponent } from './admin-login/admin-login.component';
     ErrorComponent,
     AdminHomeComponent,
     AdminLoginComponent,
+    UserHomeComponent,
+    ShowUserBookingsComponent,
   ],
   imports: [
     FormsModule,

@@ -16,17 +16,26 @@ export class AdminHomeComponent implements OnInit {
   adminDetails = null;
 
   ngOnInit(): void {
-    this.adminId = parseInt(localStorage.getItem("adminId"));
+    this.adminId = localStorage.getItem("adminId");
     if (this.adminId == null){
       this.router.navigate(["/error","admin not logged in login to continue"]);
     }
+    this.adminId = parseInt(this.adminId);
     this.adminService.getAdminDetails(this.adminId).subscribe(
       (data) => {
         this.adminDetails = data;
       },
       (error) => {
-        this.router.navigate(["/error","invalid admin id provided"]);
+        this.router.navigate([
+          "/error",
+          "admin not logged in login to continue",
+        ]);
       }
     );
+  }
+
+  logout(){
+    localStorage.removeItem("adminId");
+    this.router.navigate(["/adminLogin"]);
   }
 }
