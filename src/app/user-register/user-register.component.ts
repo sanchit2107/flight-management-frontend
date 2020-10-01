@@ -1,7 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { AbstractControl, FormBuilder, Validators } from "@angular/forms";
 import { Router } from "@angular/router";
-import { UserService } from "../user.service";
+import { UserService } from "../service/user.service";
 
 @Component({
   selector: "app-user-register",
@@ -57,7 +57,7 @@ export class UserRegisterComponent implements OnInit {
         console.log(localStorage.getItem("userId"));
       },
       error => {
-        this.router.navigate(["/error","invalid data provided"]);
+        this.router.navigate(["/error","invalid data provided or unable to connect"]);
       }
     );
   }
