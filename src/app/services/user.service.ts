@@ -39,6 +39,10 @@ export class UserService {
     return this.http.delete(this.baseUrl + "/deleteBooking/" + bookingId + "/" + userId).pipe(catchError(this.errorHandler));
   }
 
+  
+  updateUser(user):Observable<any>{
+    return this.http.post<any>(this.baseUrl + "/updateUser",JSON.stringify(user),this.options).pipe(catchError(this.errorHandler));
+  }
 
 
   getUser(id):Observable<any>{

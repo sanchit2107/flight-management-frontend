@@ -1,0 +1,118 @@
+<div class="container">
+    <h1 align="center">User Update</h1>
+    <br><br>
+
+    <div class="row" align="center">
+        <div class="col-6">
+            <button class="btn btn-primary" routerLink="/userHome" >home</button>
+        </div>
+
+        <div class="col-6">
+            <button class="btn btn-primary" (click) = "logout()">
+                logout
+            </button>
+        </div>
+    </div><br><br>
+    
+    <div class="jumbotron" style="padding-bottom: 5%;">
+
+        <form class = "form-group" [formGroup]="updateForm" (ngSubmit) = "submit()">
+
+            <!------------ userName------- -->
+
+            <div class="row">
+                <div class="col-6">
+                    <div *ngIf="updateForm.get('userName').invalid && updateForm.get('userName').touched">
+                        <small class="text-danger">*Field mandatory</small>
+                    </div>
+                    <label > name: </label>
+                </div>
+                <div class="col-6">
+                    <input [class.is-invalid]="updateForm.get('userName').invalid && updateForm.get('userName').touched" type="text" class="form-control" formControlName = "userName" />
+                </div>
+            </div><br>
+
+            <!------------ email--------- -->
+
+            <div class="row">
+                <div class="col-6">
+                    <div *ngIf="updateForm.get('email').invalid && updateForm.get('email').touched">
+                        <small class="text-danger">*Field mandatory</small>
+                    </div>
+                    <label > email: </label>
+                </div>
+                <div class="col-6">
+                    <input [class.is-invalid]="updateForm.get('email').invalid && updateForm.get('email').touched" type="text" class="form-control" formControlName = "email" />
+                </div>
+            </div><br>
+
+
+            <!--------- phone number ----------- -->
+
+            <div class="row">
+                <div class="col-6">
+                    <div *ngIf="updateForm.get('phone').invalid && updateForm.get('phone').touched">
+                        
+                        <div *ngIf="updateForm.get('phone').errors?.required">
+                            <small class="text-danger">*Field mandatory</small>
+                        </div>
+
+                        <div *ngIf="updateForm.get('phone').errors?.pattern">
+                            <small class="text-danger">*invalid number</small>
+                        </div>
+
+                    </div>
+                    <label >Phone Number: </label>
+
+                </div>
+                <div class="col-6 input-group">
+                    <div class="input-group-prepend">
+                        <div class="input-group-text">
+                            <span>+91</span>
+                        </div>
+                    </div>
+                    <input [class.is-invalid]="updateForm.get('phone').invalid && updateForm.get('phone').touched" type="number" class="form-control" formControlName="phone" />
+                </div>
+
+            </div> <br>
+
+
+            <!----------- password -------------->
+
+            <div class="row">
+            <div class="col-6">
+                <div *ngIf="updateForm.get('password').invalid && updateForm.get('password').touched">
+                    <div *ngIf="updateForm.get('password').errors?.required" >
+                        <small class="text-danger">*Field mandatory</small>
+                    </div>
+                    <div *ngIf="updateForm.get('password').errors?.minlength">
+                        <small class="text-danger">*password must be minimum 8 characters</small>
+                    </div>
+                </div>
+                <label >new password:</label>
+            </div>
+            <div class="col-6"><input [class.is-invalid]="updateForm.get('password').invalid && updateForm.get('password').touched" type="password" class="form-control" formControlName= "password"/></div>
+        </div><br>
+
+        <!----------------- confirm password------------ -->
+        <div class="row">
+            <div class="col-6">
+                <div *ngIf="updateForm.errors?.mismatch">  
+                    <small class="text-danger">*mismatch</small>
+                </div>
+                <label >Confirm password:</label>
+            </div>
+            <div class="col-6"><input [class.is-invalid]="updateForm.errors?.mismatch" type="password" class="form-control" formControlName="confirmPassword" /></div>
+        </div><br>
+
+        <div align="center">
+            <input [disabled] = "!updateForm.valid" type="submit" class="btn btn-primary"  value="Update">
+        </div><br>
+
+        </form>
+        
+
+    </div>
+
+
+</div>

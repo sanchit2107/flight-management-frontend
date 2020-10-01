@@ -11,10 +11,19 @@
 
   <div class="mb-2" align="center">
       <div class="row">
-          <div class="col-6">
+          <div class="col-3">
               <button class="btn btn-primary" (click) = "getBookings()">View Bookings</button>
           </div>
-          <div class="col-6">
+
+          <div class="col-3">
+            <button class="btn btn-primary" routerLink="/viewUser" >view details</button>
+          </div>
+
+          <div class="col-3">
+            <button class="btn btn-primary" routerLink="/updateUser">update details</button>
+          </div>
+
+          <div class="col-3">
               <button class="btn btn-primary" (click) = "logout()">logout</button>
           </div>
       </div>
