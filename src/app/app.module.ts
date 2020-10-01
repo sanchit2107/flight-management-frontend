@@ -7,11 +7,20 @@ import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
 import { UserRegisterComponent } from "./user-register/user-register.component";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { HttpClientModule } from "@angular/common/http";
-import { UserLoginComponent } from './user-login/user-login.component';
-import { ErrorComponent } from './error/error.component';
+import { UserLoginComponent } from "./user-login/user-login.component";
+import { ErrorComponent } from "./error/error.component";
+import { AdminHomeComponent } from "./admin-home/admin-home.component";
+import { AdminLoginComponent } from './admin-login/admin-login.component';
 
 @NgModule({
-  declarations: [AppComponent, UserRegisterComponent, UserLoginComponent, ErrorComponent],
+  declarations: [
+    AppComponent,
+    UserRegisterComponent,
+    UserLoginComponent,
+    ErrorComponent,
+    AdminHomeComponent,
+    AdminLoginComponent,
+  ],
   imports: [
     FormsModule,
     ReactiveFormsModule,

@@ -57,7 +57,7 @@ export class UserRegisterComponent implements OnInit {
         console.log(localStorage.getItem("userId"));
       },
       error => {
-        this.router.navigate(["/error","invalid data provided"]);
+        this.router.navigate(["/error","invalid data provided or unable to connect"]);
       }
     );
   }
