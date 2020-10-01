@@ -1,4 +1,5 @@
 export class FlightDetails {
+  flightNo: number;
   sourceAirport: string;
   destinationAirport: string;
   availableSeats: number;
