@@ -1,0 +1,68 @@
+<h3>update Flight</h3>
+<div class="updateFlight jumbotron">
+  <form (ngSubmit)="onSubmit()" [formGroup] = "flightForm">
+
+    <div align="center">
+      <button class="btn btn-primary" routerLink="/adminHome"> Goto Home</button>
+    </div><br><br>
+
+    <div class="form-group">
+      <label>Arrival Airport</label>
+      <input type="text" placeholder="Arrival Airport" formControlName="arrivalAirport" [class.is-invalid]="flightForm.get('arrivalAirport').invalid && flightForm.get('arrivalAirport').touched" class="form-control" >
+      <small class="text-danger" *ngIf="flightForm.get('arrivalAirport').invalid && flightForm.get('arrivalAirport').touched">Please fill the departure Airport</small>
+    </div>
+
+    <div class="form-group">
+      <label>Departure Airport</label>
+      <input type="text" placeholder="Departure Airport" formControlName="departureAirport" [class.is-invalid]="flightForm.get('departureAirport').invalid && flightForm.get('departureAirport').touched" class="form-control" >
+      <small class="text-danger" *ngIf="flightForm.get('departureAirport').invalid && flightForm.get('departureAirport').touched">Please fill the arrival Airport</small>
+    </div>
+
+    <div class="form-group">
+      <label>Available seats</label>
+      <input type="number" placeholder="Available seats" formControlName="availableSeats" [class.is-invalid]="flightForm.get('availableSeats').invalid && flightForm.get('availableSeats').touched" class="form-control" >
+      <small class="text-danger" *ngIf="flightForm.get('availableSeats').invalid && flightForm.get('availableSeats').touched">Invalid or no input provided</small>
+    </div>
+
+    <div class="form-group">
+      <label>Departure Date</label>
+      <input type="date" placeholder="Departure Date" formControlName="departureDate" [class.is-invalid]="flightForm.get('departureDate').invalid && flightForm.get('departureDate').touched" class="form-control" >
+      <small class="text-danger" *ngIf="flightForm.get('departureDate').invalid && flightForm.get('departureDate').touched">invalid or no date provided</small>
+    </div>
+
+    <div class="form-group">
+      <label>Arrival Date</label>
+      <input type="date" placeholder="Arrival Date" formControlName="arrivalDate" [class.is-invalid]="flightForm.get('arrivalDate').invalid && flightForm.get('arrivalDate').touched " class="form-control" >
+      <small class="text-danger" *ngIf="flightForm.get('arrivalDate').errors?.required && flightForm.get('arrivalDate').invalid && flightForm.get('arrivalDate').touched">mandatory Field</small>
+      <small class="text-danger" *ngIf="flightForm.errors?.arrivalDateError">must be greater than or equal departure date</small>
+    </div>
+
+    <div class="form-group">
+      <label>Arrival Time</label>
+      <input type="time" placeholder="Arrival Time" formControlName="arrivalTime" [class.is-invalid]="flightForm.get('arrivalTime').invalid && flightForm.get('arrivalTime').touched" class="form-control">
+      <small class="text-danger" *ngIf="flightForm.get('arrivalTime').invalid && flightForm.get('arrivalTime').touched">Please fill the arrival time</small>
+    </div>
+
+    <div class="form-group">
+      <label for="name">Departure Time</label>
+      <input type="time" placeholder="departure Time" formControlName="departureTime" [class.is-invalid]="flightForm.get('departureTime').invalid && flightForm.get('departureTime').touched" class="form-control">
+      <small class="text-danger" *ngIf="flightForm.get('departureTime').invalid && flightForm.get('departureTime').touched">Please fill the departure time</small>
+    </div>
+
+    <div class="form-group">
+      <label >Flight Vendor</label>
+      <input type="text" placeholder="flight Vendor" formControlName="flightVendor" [class.is-invalid]="flightForm.get('flightVendor').invalid && flightForm.get('flightVendor').touched" class="form-control">
+      <small class="text-danger" *ngIf="flightForm.get('flightVendor').invalid && flightForm.get('flightVendor').touched">Flight vendor is Required</small>
+    </div>
+
+    <div class="form-group">
+      <label for="name">Price of Ticket</label>
+      <input type="number" placeholder="Price of Ticket" formControlName="cost" [class.is-invalid]="flightForm.get('cost').invalid && flightForm.get('cost').touched" class="form-control">
+      <small class="text-danger" *ngIf="flightForm.get('departureTime').invalid && flightForm.get('departureTime').touched">invalid price provided</small>
+    </div>
+
+    <input type="submit" value="update flight" [disabled]="!flightForm.valid"  class="btn btn-success">
+  </form>
+</div>
+
+

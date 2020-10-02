@@ -1,0 +1,42 @@
+<div class="panel panel-primary">
+  <div class="panel-heading" >
+    <h2>List of Flights</h2>
+  </div><br>
+  <button class="btn btn-primary" routerLink="/adminHome" >Goto Home</button>
+  <div class="panel-body">
+    <table class="table table-striped" *ngIf="flights">
+      <thead>
+        <tr>
+          <th>Flight Number</th>
+          <th>Departure Airport</th>
+          <th>Arrival Airport</th>
+          <th>Available Seats</th>
+          <th>Departure Date</th>
+          <th>Arrival Date</th>
+          <th>Arrival Time</th>
+          <th>Departure Time</th>
+          <th>Flight Vendor</th>
+          <th>Ticket Price</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let flight of flights">
+          <td>{{flight.flightNumber}}</td>
+          <td>{{flight.departureAirport}}</td>
+          <td>{{flight.arrivalAirport}}</td>
+          <td>{{flight.availableSeats}}</td>
+          <td>{{flight.departureDate}}</td>
+          <td>{{flight.arrivalDate}}</td>
+          <td>{{flight.arrivalTime}}</td>
+          <td>{{flight.departureTime}}</td>
+          <td>{{flight.flightVendor}}</td>
+          <td>{{flight.cost}}</td>
+          <td><button  class="btn btn-danger" (click)="removeFlight(flight.flightNumber)" >Delete</button> &nbsp;
+              <button  class="btn btn-info" (click)="updateFlight(flight.flightNumber)" >Update</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
