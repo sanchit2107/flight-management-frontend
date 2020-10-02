@@ -1,0 +1,65 @@
+<h3>Add Flight</h3>
+<div [hidden]="submitted" class="addFlight">
+  <form (ngSubmit)="onSubmit()">
+
+    <div class="form-group">
+      <label for="name">Source Airport</label>
+      <input type="text" placeholder="Source Airport" #sourceAirport="ngModel" [class.is-invalid]="sourceAirport.invalid && sourceAirport.touched" class="form-control" id="sourceAirport" required [(ngModel)]="flight.sourceAirport" name="sourceAirport">
+      <small class="text-danger" [class.d-none]="sourceAirport.valid || sourceAirport.untouched">Please fill the departure Airport</small>
+    </div>
+
+    <div class="form-group">
+      <label for="name">Destination Airport</label>
+      <input type="text" placeholder="Destination Airport" #destinationAirport="ngModel" [class.is-invalid]="destinationAirport.invalid && destinationAirport.touched" class="form-control" id="destinationAirport" required [(ngModel)]="flight.destinationAirport" name="destinationAirport">
+      <small class="text-danger" [class.d-none]="destinationAirport.valid || destinationAirport.untouched">Please fill the arrival Airport</small>
+    </div>
+
+    <div class="form-group">
+      <label for="name">Available seats</label>
+      <input type="number" placeholder="Available seats" #seatCapacity="ngModel" [class.is-invalid]="seatCapacity.invalid && seatCapacity.touched" class="form-control" id="seatCapacity" required [(ngModel)]="flight.availableSeats" name="seatCapacity">
+      <small class="text-danger" [class.d-none]="seatCapacity.valid || seatCapacity.untouched">Available seats is Required</small>
+    </div>
+
+    <div class="form-group">
+      <label for="name">Departure Date</label>
+      <input type="text" placeholder="Departure Date" #departureDate="ngModel" [class.is-invalid]="departureDate.invalid && departureDate.touched" class="form-control" id="departureDate" required [(ngModel)]="flight.departureDate" name="departureDate">
+      <small class="text-danger" [class.d-none]="departureDate.valid || departureDate.untouched">Please fill the departure date</small>
+    </div>
+
+    <div class="form-group">
+      <label for="name">Arrival Date</label>
+      <input type="text" placeholder="Arrival Date" #arrivalDate="ngModel" [class.is-invalid]="arrivalDate.invalid && arrivalDate.touched" class="form-control" id="arrivalDate" required [(ngModel)]="flight.arrivalDate" name="arrivalDate">
+      <small class="text-danger" [class.d-none]="arrivalDate.valid || arrivalDate.untouched">Please fill the arrival date</small>
+    </div>
+
+    <div class="form-group">
+      <label for="name">Arrival Time</label>
+      <input type="text" placeholder="Arrival Time" #arrivalTime="ngModel" [class.is-invalid]="arrivalTime.invalid && arrivalTime.touched" class="form-control" id="arrivalTime" required [(ngModel)]="flight.arrivalTime" name="arrivalTime">
+      <small class="text-danger" [class.d-none]="arrivalTime.valid || arrivalTime.untouched">Please fill the arrival time</small>
+    </div>
+
+    <div class="form-group">
+      <label for="name">Departure Time</label>
+      <input type="text" placeholder="departure Time" #departureTime="ngModel" [class.is-invalid]="departureTime.invalid && departureTime.touched" class="form-control" id="departureTime" required [(ngModel)]="flight.departureTime" name="departureTime">
+      <small class="text-danger" [class.d-none]="departureTime.valid || departureTime.untouched">Please fill the departure time</small>
+    </div>
+
+    <div class="form-group">
+      <label for="name">Flight Vendor</label>
+      <input type="text" placeholder="flight Vendor" #flightVendor="ngModel" [class.is-invalid]="flightVendor.invalid && flightVendor.touched" class="form-control" id="flightVendor" required [(ngModel)]="flight.flightVendor" name="flightVendor">
+      <small class="text-danger" [class.d-none]="flightVendor.valid || flightVendor.untouched">Flight vendor is Required</small>
+    </div>
+
+    <div class="form-group">
+      <label for="name">Price of Ticket</label>
+      <input type="number" placeholder="Price of Ticket" #price="ngModel" [class.is-invalid]="price.invalid && price.touched" class="form-control" id="price" required [(ngModel)]="flight.price" name="price">
+      <small class="text-danger" [class.d-none]="price.valid || price.untouched">Price is Required</small>
+    </div>
+
+    <button type="submit" class="btn btn-success">Submit</button>
+  </form>
+</div>
+
+<div [hidden]="!submitted">
+  <h4>You submitted successfully!</h4>
+</div>

@@ -7,6 +7,11 @@ import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
 import { UserRegisterComponent } from "./user-register/user-register.component";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { HttpClientModule } from "@angular/common/http";
+
+import { UserLoginComponent } from './user-login/user-login.component';
+import { ErrorComponent } from './error/error.component';
+import { AddFlightDetailsComponent } from './add-flight-details/add-flight-details.component';
+import { ViewAllFlightDetailsComponent } from './view-all-flight-details/view-all-flight-details.component';
 import { UserLoginComponent } from "./user-login/user-login.component";
 import { ErrorComponent } from "./error/error.component";
 import { AdminHomeComponent } from "./admin-home/admin-home.component";
@@ -28,6 +33,8 @@ import { UpdateUserDetailsComponent } from './update-user-details/update-user-de
     ShowUserBookingsComponent,
     ViewUserDetailsComponent,
     UpdateUserDetailsComponent,
+    AddFlightDetailsComponent, 
+    ViewAllFlightDetailsComponent
   ],
   imports: [
     FormsModule,
