@@ -1,5 +1,5 @@
-<h3>Add Flight</h3>
-<div class="addFlight jumbotron">
+<h3>update Flight</h3>
+<div class="updateFlight jumbotron">
   <form (ngSubmit)="onSubmit()" [formGroup] = "flightForm">
 
     <div align="center">
@@ -61,7 +61,7 @@
       <small class="text-danger" *ngIf="flightForm.get('departureTime').invalid && flightForm.get('departureTime').touched">invalid price provided</small>
     </div>
 
-    <input type="submit" value="add flight" [disabled]="!flightForm.valid"  class="btn btn-success">
+    <input type="submit" value="update flight" [disabled]="!flightForm.valid"  class="btn btn-success">
   </form>
 </div>
 

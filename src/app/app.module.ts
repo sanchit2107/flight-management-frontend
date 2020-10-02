@@ -7,19 +7,17 @@ import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
 import { UserRegisterComponent } from "./user-register/user-register.component";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { HttpClientModule } from "@angular/common/http";
-
 import { UserLoginComponent } from './user-login/user-login.component';
 import { ErrorComponent } from './error/error.component';
 import { AddFlightDetailsComponent } from './add-flight-details/add-flight-details.component';
 import { ViewAllFlightDetailsComponent } from './view-all-flight-details/view-all-flight-details.component';
-import { UserLoginComponent } from "./user-login/user-login.component";
-import { ErrorComponent } from "./error/error.component";
 import { AdminHomeComponent } from "./admin-home/admin-home.component";
 import { AdminLoginComponent } from './admin-login/admin-login.component';
 import { UserHomeComponent } from './user-home/user-home.component';
 import { ShowUserBookingsComponent } from './show-user-bookings/show-user-bookings.component';
 import { ViewUserDetailsComponent } from './view-user-details/view-user-details.component';
 import { UpdateUserDetailsComponent } from './update-user-details/update-user-details.component';
+import { UpdateFlightComponent } from './update-flight/update-flight.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +32,7 @@ import { UpdateUserDetailsComponent } from './update-user-details/update-user-de
     ViewUserDetailsComponent,
     UpdateUserDetailsComponent,
     AddFlightDetailsComponent, 
-    ViewAllFlightDetailsComponent
+    ViewAllFlightDetailsComponent, UpdateFlightComponent
   ],
   imports: [
     FormsModule,

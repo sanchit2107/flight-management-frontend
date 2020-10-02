@@ -5,6 +5,7 @@ import { AdminHomeComponent } from "./admin-home/admin-home.component";
 import { AdminLoginComponent } from "./admin-login/admin-login.component";
 import { ErrorComponent } from "./error/error.component";
 import { ShowUserBookingsComponent } from "./show-user-bookings/show-user-bookings.component";
+import { UpdateFlightComponent } from './update-flight/update-flight.component';
 import { UpdateUserDetailsComponent } from "./update-user-details/update-user-details.component";
 import { UserHomeComponent } from "./user-home/user-home.component";
 import { UserLoginComponent } from "./user-login/user-login.component";
@@ -18,13 +19,14 @@ const routes: Routes = [
   { path: "addUser", component: UserRegisterComponent },
   { path: "error/:message", component: ErrorComponent },
   { path: "addFlightDetails", component: AddFlightDetailsComponent},
-  { path: "allFlightsDetails", component: ViewAllFlightDetailsComponent}
+  { path: "allFlightsDetails", component: ViewAllFlightDetailsComponent},
   { path: "adminHome", component: AdminHomeComponent },
   { path: "adminLogin", component: AdminLoginComponent },
   { path: "userHome", component: UserHomeComponent },
   { path: "getBookingByUser/:userId", component: ShowUserBookingsComponent },
   { path: "viewUser", component: ViewUserDetailsComponent },
   { path: "updateUser", component: UpdateUserDetailsComponent },
+  {path:"updateFlight/:flightNumber",component:UpdateFlightComponent}
 
 ];
 

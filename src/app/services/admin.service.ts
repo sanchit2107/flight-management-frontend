@@ -24,18 +24,38 @@ export class AdminService {
 
   adminLogin(admin): Observable<any> {
     console.log(JSON.stringify(admin));
-    return this.http.post<any>(`${this.baseUrl}/adminLogin`,JSON.stringify(admin),this.options).pipe(
-      catchError(this.errorHandler)
-    );
+    return this.http
+      .post<any>(
+        `${this.baseUrl}/adminLogin`,
+        JSON.stringify(admin),
+        this.options
+      )
+      .pipe(catchError(this.errorHandler));
   }
 
-  getAdminDetails(id):Observable<any>{
-    return this.http.get<any>(`${this.baseUrl}/getAdmin/${id}`).pipe(
-      catchError(this.errorHandler)
-    );
+  getAdminDetails(id): Observable<any> {
+    return this.http
+      .get<any>(`${this.baseUrl}/getAdmin/${id}`)
+      .pipe(catchError(this.errorHandler));
   }
 
-  errorHandler(error){
+  addFlight(flight): Observable<Object> {
+    return this.http.post(`${this.baseUrl}/addFlightDetails`, JSON.stringify(flight),this.options).pipe(catchError(this.errorHandler));
+  }
+
+  modifyFlight(flight): Observable<Object> {
+    return this.http.post(`${this.baseUrl}/updateFlightDetails`, JSON.stringify(flight),this.options).pipe(catchError(this.errorHandler));
+  }
+
+  removeFlight(flightNo): Observable<any> {
+    return this.http.delete(`${this.baseUrl}/deleteFlightDetails/${flightNo}`).pipe(catchError(this.errorHandler));
+  }
+
+  viewAllFlight(): Observable<any> {
+    return this.http.get(`${this.baseUrl}/getAllFlightDetails`).pipe(catchError(this.errorHandler));
+  }
+
+  errorHandler(error) {
     let errorMessage = "";
     if (error.error instanceof ErrorEvent) {
       // client-side error
