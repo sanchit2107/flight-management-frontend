@@ -18,6 +18,9 @@ import { ShowUserBookingsComponent } from './show-user-bookings/show-user-bookin
 import { ViewUserDetailsComponent } from './view-user-details/view-user-details.component';
 import { UpdateUserDetailsComponent } from './update-user-details/update-user-details.component';
 import { UpdateFlightComponent } from './update-flight/update-flight.component';
+import { AddPassengersComponent } from './add-passengers/add-passengers.component';
+import { UpdatePassengerComponent } from './update-passenger/update-passenger.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +35,7 @@ import { UpdateFlightComponent } from './update-flight/update-flight.component';
     ViewUserDetailsComponent,
     UpdateUserDetailsComponent,
     AddFlightDetailsComponent, 
-    ViewAllFlightDetailsComponent, UpdateFlightComponent
+    ViewAllFlightDetailsComponent, UpdateFlightComponent, AddPassengersComponent, UpdatePassengerComponent, PageNotFoundComponent
   ],
   imports: [
     FormsModule,

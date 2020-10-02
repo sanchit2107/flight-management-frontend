@@ -15,10 +15,12 @@ export class ShowUserBookingsComponent implements OnInit {
   ) {}
 
   userId = null;
-  bookings: Array<any> = null;
+  bookings  = null;
   found = false;
   notFound = false;
-  passengers:Array<any> = null;
+  passengers = null;
+
+  flights = null;
 
   ngOnInit(): void {
     this.userId = localStorage.getItem("userId");
@@ -44,6 +46,10 @@ export class ShowUserBookingsComponent implements OnInit {
       );
     }
   }
+
+
+  /* ------method to delete booking-------- */
+
 
   delete(bookingId) {
     if (confirm("are you sure you want to delete")) {
@@ -78,7 +84,28 @@ export class ShowUserBookingsComponent implements OnInit {
     }
   }
 
+
+  /* ------method to get flight detais---------- */
+
+  getFlightDetails(flightNumber){
+    this.passengers = null;
+    this.userService.getFlightByNumber(flightNumber).subscribe(
+      data => {
+        this.flights = data;
+      }, error => {
+        this.router.navigate(["/error","no flight found or flight is deleted"]);
+      }
+    );
+  }
+
+  updatePassenger(passengerId){
+    this.router.navigate(["/updatePassenger",passengerId]);
+  }
+
+
+
   getPassengers(booking){
+    this.flights = null;
     this.passengers = booking.passengers;
   }
 

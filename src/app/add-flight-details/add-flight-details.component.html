@@ -7,16 +7,17 @@
     </div><br><br>
 
     <div class="form-group">
+      <label>Departure Airport</label>
+      <input type="text" placeholder="Departure Airport" formControlName="departureAirport" [class.is-invalid]="flightForm.get('departureAirport').invalid && flightForm.get('departureAirport').touched" class="form-control" >
+      <small class="text-danger" *ngIf="flightForm.get('departureAirport').invalid && flightForm.get('departureAirport').touched">Please fill the arrival Airport</small>
+    </div>
+
+    <div class="form-group">
       <label>Arrival Airport</label>
       <input type="text" placeholder="Arrival Airport" formControlName="arrivalAirport" [class.is-invalid]="flightForm.get('arrivalAirport').invalid && flightForm.get('arrivalAirport').touched" class="form-control" >
       <small class="text-danger" *ngIf="flightForm.get('arrivalAirport').invalid && flightForm.get('arrivalAirport').touched">Please fill the departure Airport</small>
     </div>
 
-    <div class="form-group">
-      <label>Departure Airport</label>
-      <input type="text" placeholder="Departure Airport" formControlName="departureAirport" [class.is-invalid]="flightForm.get('departureAirport').invalid && flightForm.get('departureAirport').touched" class="form-control" >
-      <small class="text-danger" *ngIf="flightForm.get('departureAirport').invalid && flightForm.get('departureAirport').touched">Please fill the arrival Airport</small>
-    </div>
 
     <div class="form-group">
       <label>Available seats</label>
@@ -38,16 +39,18 @@
     </div>
 
     <div class="form-group">
+      <label for="name">Departure Time</label>
+      <input type="time" placeholder="departure Time" formControlName="departureTime" [class.is-invalid]="flightForm.get('departureTime').invalid && flightForm.get('departureTime').touched" class="form-control">
+      <small class="text-danger" *ngIf="flightForm.get('departureTime').invalid && flightForm.get('departureTime').touched">Please fill the departure time</small>
+    </div>
+
+    <div class="form-group">
       <label>Arrival Time</label>
       <input type="time" placeholder="Arrival Time" formControlName="arrivalTime" [class.is-invalid]="flightForm.get('arrivalTime').invalid && flightForm.get('arrivalTime').touched" class="form-control">
       <small class="text-danger" *ngIf="flightForm.get('arrivalTime').invalid && flightForm.get('arrivalTime').touched">Please fill the arrival time</small>
     </div>
 
-    <div class="form-group">
-      <label for="name">Departure Time</label>
-      <input type="time" placeholder="departure Time" formControlName="departureTime" [class.is-invalid]="flightForm.get('departureTime').invalid && flightForm.get('departureTime').touched" class="form-control">
-      <small class="text-danger" *ngIf="flightForm.get('departureTime').invalid && flightForm.get('departureTime').touched">Please fill the departure time</small>
-    </div>
+    
 
     <div class="form-group">
       <label >Flight Vendor</label>

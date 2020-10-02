@@ -19,6 +19,13 @@ export class AddFlightDetailsComponent implements OnInit {
 
   adminId = null;
   
+    /*
+    * --------form for flight details---------
+    *
+    * 
+    * */
+
+
 
   flightForm = this.formBuilder.group({
     departureAirport: [null, Validators.required],
@@ -32,6 +39,10 @@ export class AddFlightDetailsComponent implements OnInit {
     cost: [null, [Validators.required,Validators.min(1),Validators.max(10000)]],
   },{validators:this.arrivalDateValidator});
 
+
+
+
+
   ngOnInit(): void {
     this.adminId = localStorage.getItem("adminId");
     if (this.adminId == null){
@@ -41,6 +52,11 @@ export class AddFlightDetailsComponent implements OnInit {
     }
   }
 
+
+  /* --------validator method for departure date----
+  */
+
+
   departureDateValidator(control: AbstractControl) {
     const inputDate = new Date(control.value);
     const currentDate = new Date();
@@ -49,6 +65,10 @@ export class AddFlightDetailsComponent implements OnInit {
     }
     return null;
   }
+
+
+
+  /* ----validator method for arrival date---------- */
 
   arrivalDateValidator(control: AbstractControl){
     const depDate = control.get('departureDate');

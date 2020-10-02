@@ -22,31 +22,55 @@ export class UserService {
 
   options = { headers: this.httpHeaders };
 
-  addUser(user):Observable<any> {
+  /* ---method to add user---- */
+
+  addUser(user) {
     console.log(JSON.stringify(user));
-    return this.http.post<any>(`${this.baseUrl}/addUser`,JSON.stringify(user),this.options).pipe(
+    return this.http.post(`${this.baseUrl}/addUser`,JSON.stringify(user),this.options).pipe(
       catchError(this.errorHandler)
     );
   
   }
 
+  /* -----method to add booking---- */
 
-  getBookingByUser(id):Observable<any>{
+  addBooking(flightNumber,userId,passengers){
+    return this.http.post(`${this.baseUrl}/addBooking/${userId}/${flightNumber}`,JSON.stringify(passengers),this.options)
+    .pipe(catchError(this.errorHandler));
+  }
+
+  /* ---method to get bookings */
+
+  getBookingByUser(id){
     return this.http.get(this.baseUrl + "/getBookingByUser/" + id).pipe( catchError(this.errorHandler));
   }
+
+  /* ---method to delete booking--- */
 
   deleteBooking(bookingId,userId){
     return this.http.delete(this.baseUrl + "/deleteBooking/" + bookingId + "/" + userId).pipe(catchError(this.errorHandler));
   }
 
+  /* ----method to update user----- */
   
-  updateUser(user):Observable<any>{
-    return this.http.post<any>(this.baseUrl + "/updateUser",JSON.stringify(user),this.options).pipe(catchError(this.errorHandler));
+  updateUser(user){
+    return this.http.post(this.baseUrl + "/updateUser",JSON.stringify(user),this.options).pipe(catchError(this.errorHandler));
   }
 
+  /* -------method to get user------- */
 
-  getUser(id):Observable<any>{
-    return this.http.get<any>(this.baseUrl + "/getUser/" + id).pipe(catchError(this.errorHandler));
+  getUser(id){
+    return this.http.get(this.baseUrl + "/getUser/" + id).pipe(catchError(this.errorHandler));
+  }
+
+  /* -----method to get flight----------- */
+
+  getFlightByNumber(flightNumber){
+    return this.http.get(`${this.baseUrl}/getFlightByNumber/${flightNumber}`).pipe(catchError(this.errorHandler));
+  }
+
+  updatePassenger(passenger){
+    return this.http.post(`${this.baseUrl}/updatePassenger`,JSON.stringify(passenger),this.options).pipe(catchError(this.errorHandler));
   }
 
 

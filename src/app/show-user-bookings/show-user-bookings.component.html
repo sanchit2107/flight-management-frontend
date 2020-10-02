@@ -33,10 +33,11 @@
                     <td scope="row">{{booking.bookingId}}</td>
                     <td>{{booking.flightNumber}}</td>
                     <td>{{booking.totalCost | currency:'INR'}}</td>
-                    <td>{{booking.bookingDate}}</td>
+                    <td>{{booking.bookingDate }}</td>
                     <td>{{booking.bookingTime}}</td>
                     <td>
                         <button class="btn btn-primary" (click)="getPassengers(booking)" >passenger Details</button> &nbsp;
+                        <button class="btn btn-primary" (click)="getFlightDetails(booking.flightNumber)" >flight Details</button> &nbsp;
                         <button class="btn btn-danger" (click)="delete(booking.bookingId)" >delete</button>
                     </td>
                 </tr>
@@ -44,6 +45,46 @@
         </table>
 
     </div><br><br>
+
+    <div class="jumbotron" align="center" *ngIf="flights">
+    <div class="row">
+      <div class="col-6"><h4>Flight Number:</h4></div>
+      <div class="col-6"><h4>{{ flights.flightNumber }}</h4></div>
+    </div>
+
+    <div class="row">
+      <div class="col-6"><h4>From:</h4></div>
+      <div class="col-6"><h4>{{ flights.departureAirport }}</h4></div>
+    </div>
+
+    <div class="row">
+      <div class="col-6"><h4>To:</h4></div>
+      <div class="col-6"><h4>{{ flights.arrivalAirport }}</h4></div>
+    </div>
+
+    <div class="row">
+      <div class="col-6"><h4>Departure date:</h4></div>
+      <div class="col-6"><h4>{{ flights.departureDate }}</h4></div>
+    </div>
+
+    <div class="row">
+      <div class="col-6"><h4>Departure Time:</h4></div>
+      <div class="col-6"><h4>{{ flights.departureTime }}</h4></div>
+    </div>
+    
+    <div class="row">
+      <div class="col-6"><h4>Arrival Date:</h4></div>
+      <div class="col-6"><h4>{{ flights.arrivalDate }}</h4></div>
+    </div>
+
+    <div class="row">
+      <div class="col-6"><h4>Arrival Time:</h4></div>
+      <div class="col-6"><h4>{{ flights.arrivalTime }}</h4></div>
+    </div>
+
+    <br><br>
+
+  </div>
 
     <div *ngIf="passengers">
 
@@ -56,6 +97,7 @@
                     <th>passenger name</th>
                     <th>passenger age</th>
                     <th>passenger luggage</th>
+                    <th>Action</th>
                 </tr>
             </thead>
             <tbody *ngFor="let passenger of passengers" class="table-striped">
@@ -64,6 +106,7 @@
                     <td>{{passenger.name}}</td>
                     <td>{{passenger.age}}</td>
                     <td>{{passenger.luggage}}</td>
+                    <td><button class="btn btn-primary" (click)="updatePassenger(passenger.passengerId)">Update</button></td>
                 </tr>
             </tbody>            
         </table>

@@ -19,6 +19,10 @@ export class AdminLoginComponent implements OnInit {
   failure = { value: false };
   adminData = null;
 
+
+
+    /* ----login form--- */
+
   loginForm = this.formBuilder.group({
 
     adminId : [null,Validators.required],
@@ -28,11 +32,13 @@ export class AdminLoginComponent implements OnInit {
 
   ngOnInit(): void {}
 
+
+  /* ----method for admin login------- */
+
   submit(){
     this.adminService.adminLogin(this.loginForm.value).subscribe(
       (data) => {
         this.adminData = data;
-        console.log(this.adminData.adminId);
         this.failure.value = false;
         localStorage.setItem("adminId",this.adminData.adminId);
         this.router.navigate(["/adminHome"]);

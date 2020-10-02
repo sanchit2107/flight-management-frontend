@@ -21,6 +21,9 @@ export class UserHomeComponent implements OnInit {
   userId = null;
   user = null;
 
+
+  /* flight search form */
+
   searchForm = this.formBuilder.group({
     arrivalAirport: [null, Validators.required],
     departureAirport: [null, Validators.required],
@@ -44,6 +47,8 @@ export class UserHomeComponent implements OnInit {
       );
     }
   }
+
+  /* ------method to search flight--------- */
 
   search() {
     console.log(this.searchForm.get("date").value);
@@ -72,6 +77,8 @@ export class UserHomeComponent implements OnInit {
       );
   }
 
+  /* method to validate date */
+
   dateValidator(control: AbstractControl) {
     const inputDate = new Date(control.value);
     const currentDate = new Date();
@@ -89,5 +96,9 @@ export class UserHomeComponent implements OnInit {
 
   getBookings() {
     this.router.navigate(["/getBookingByUser", this.userId]);
+  }
+
+  addPassengers(){
+    this.router.navigate(["/addPassengers",this.flights.flightNumber]);
   }
 }

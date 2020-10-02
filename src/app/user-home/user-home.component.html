@@ -1,7 +1,8 @@
 <div class="container">
   <div class="p-3  bg-success text-white">
-    <h1>WELCOME {{user.userName}}</h1>
+    
     <div *ngIf="user">
+      <h1>WELCOME {{user.userName}}</h1>
       <small>id: {{ user.userId }}</small
       ><br />
       
@@ -153,7 +154,7 @@
       <div class="col-6"><h4>{{ flights.cost | currency:'INR' }}</h4></div>
     </div><br><br>
 
-    <button class="btn btn-primary">make booking</button>
+    <button class="btn btn-primary" (click)="addPassengers()">add passengers</button>
 
   </div>
 </div>
