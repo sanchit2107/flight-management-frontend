@@ -4,20 +4,21 @@ import { Router } from "@angular/router";
 import { UserService } from "../services/user.service";
 
 @Component({
-  selector: "app-user-register",
-  templateUrl: "./user-register.component.html",
-  styleUrls: ["./user-register.component.css"],
+  selector: "app-update-user-details",
+  templateUrl: "./update-user-details.component.html",
+  styleUrls: ["./update-user-details.component.css"],
 })
-export class UserRegisterComponent implements OnInit {
+export class UpdateUserDetailsComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private router: Router,
     private userService: UserService
   ) {}
 
-  private userData = null;
+  userId = null;
 
-  userRegisterForm = this.formBuilder.group(
+
+  updateForm = this.formBuilder.group(
     {
       userName: [null, Validators.required],
       email: [null, Validators.required],
@@ -31,9 +32,14 @@ export class UserRegisterComponent implements OnInit {
     { validators: this.passwordValidator }
   );
 
-  /**
-   * ------- function to check password and confirm password field are same---------
-   */
+  ngOnInit(): void {
+    this.userId = localStorage.getItem("userId");
+    if (this.userId == null){
+      this.router.navigate(["/error","login to continue"]);
+    } else {
+      this.userId = parseInt(this.userId);
+    }
+  }
 
   passwordValidator(control: AbstractControl): { [key: string]: any } | null {
     const pass = control.get("password");
@@ -45,22 +51,23 @@ export class UserRegisterComponent implements OnInit {
     }
   }
 
-  // to be completed
-
-  submit(){
-    this.userRegisterForm.removeControl("confirmPassword");
-    this.userService.addUser(this.userRegisterForm.value).subscribe(
+  submit() {
+    this.updateForm.removeControl("confirmPassword");
+    let data = this.updateForm.value;
+    data.userId = this.userId;
+    // console.log(data);
+    this.userService.updateUser(data).subscribe(
       data => {
-        this.userData = data;
-        localStorage.setItem("userId",this.userData.userId);
-        console.log(localStorage.getItem("userId"));
         this.router.navigate(["/userHome"]);
       },
       error => {
-        this.router.navigate(["/error","invalid data provided or unable to connect"]);
+        this.router.navigate(["/error","unable to update"]);
       }
     );
   }
 
-  ngOnInit(): void {}
+  logout(){
+    localStorage.removeItem("userId");
+    this.router.navigate(["/userLogin"]);
+  }
 }

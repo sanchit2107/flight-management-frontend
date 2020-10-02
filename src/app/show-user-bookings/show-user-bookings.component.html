@@ -1,0 +1,74 @@
+<div class="container">
+
+    <div align="center" class="m-3">
+        <h1> booking Details</h1>
+    </div>
+
+    <div class="row mb-6" align="center">
+        <div class="col-6">
+            <button class="btn btn-primary" routerLink="/userHome" >Home</button>
+        </div>
+        <div class="col-6">
+            <button class="btn btn-primary" (click)="logout()">logout</button>
+        </div>
+    </div><br><br>
+    <div *ngIf="notFound" align="center">
+        <h1>no booking found...</h1>
+    </div>
+
+    <div *ngIf="found">
+        <table class="table table-striped">
+            <thead class="thead-dark"> 
+                <tr >
+                    <th>booking Id</th>
+                    <th>flight Number</th>
+                    <th>Amount</th>
+                    <th>booking Date</th>
+                    <th>Booking Time</th>
+                    <th>action</th>
+                </tr>
+            </thead>
+            <tbody *ngFor="let booking of bookings" class="table-striped">
+                <tr>
+                    <td scope="row">{{booking.bookingId}}</td>
+                    <td>{{booking.flightNumber}}</td>
+                    <td>{{booking.totalCost | currency:'INR'}}</td>
+                    <td>{{booking.bookingDate}}</td>
+                    <td>{{booking.bookingTime}}</td>
+                    <td>
+                        <button class="btn btn-primary" (click)="getPassengers(booking)" >passenger Details</button> &nbsp;
+                        <button class="btn btn-danger" (click)="delete(booking.bookingId)" >delete</button>
+                    </td>
+                </tr>
+            </tbody>            
+        </table>
+
+    </div><br><br>
+
+    <div *ngIf="passengers">
+
+        <h4>passenger details</h4>
+
+        <table class="table table-striped">
+            <thead class="thead-dark"> 
+                <tr >
+                    <th>passenger ID</th>
+                    <th>passenger name</th>
+                    <th>passenger age</th>
+                    <th>passenger luggage</th>
+                </tr>
+            </thead>
+            <tbody *ngFor="let passenger of passengers" class="table-striped">
+                <tr>
+                    <td scope="row">{{passenger.passengerId}}</td>
+                    <td>{{passenger.name}}</td>
+                    <td>{{passenger.age}}</td>
+                    <td>{{passenger.luggage}}</td>
+                </tr>
+            </tbody>            
+        </table>
+
+    </div>
+
+
+</div>

@@ -30,12 +30,45 @@ export class UserService {
   
   }
 
+
+  getBookingByUser(id):Observable<any>{
+    return this.http.get(this.baseUrl + "/getBookingByUser/" + id).pipe( catchError(this.errorHandler));
+  }
+
+  deleteBooking(bookingId,userId){
+    return this.http.delete(this.baseUrl + "/deleteBooking/" + bookingId + "/" + userId).pipe(catchError(this.errorHandler));
+  }
+
+  
+  updateUser(user):Observable<any>{
+    return this.http.post<any>(this.baseUrl + "/updateUser",JSON.stringify(user),this.options).pipe(catchError(this.errorHandler));
+  }
+
+
+  getUser(id):Observable<any>{
+    return this.http.get<any>(this.baseUrl + "/getUser/" + id).pipe(catchError(this.errorHandler));
+  }
+
+
+
+
+
+
   userLogin(user):Observable<any> {
     console.log(JSON.stringify(user));
     return this.http
       .post<any>(this.baseUrl + "/userLogin", JSON.stringify(user), this.options)
       .pipe(catchError(this.errorHandler));
   }
+
+
+
+  searchFlight(from,to,date): Observable<any>{
+    return this.http.get<any>(`${this.baseUrl}/findFlight/${to}/${from}/${date}`).pipe(
+      catchError(this.errorHandler)
+    );
+  }
+
 
   errorHandler(error:HttpErrorResponse) {
     let errorMessage = "";

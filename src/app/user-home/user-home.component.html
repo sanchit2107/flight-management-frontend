@@ -1,0 +1,159 @@
+<div class="container">
+  <div class="p-3  bg-success text-white">
+    <h1>WELCOME {{user.userName}}</h1>
+    <div *ngIf="user">
+      <small>id: {{ user.userId }}</small
+      ><br />
+      
+    </div>
+  </div>
+  <br />
+
+  <div class="mb-2" align="center">
+      <div class="row">
+          <div class="col-3">
+              <button class="btn btn-primary" (click) = "getBookings()">View Bookings</button>
+          </div>
+
+          <div class="col-3">
+            <button class="btn btn-primary" routerLink="/viewUser" >view details</button>
+          </div>
+
+          <div class="col-3">
+            <button class="btn btn-primary" routerLink="/updateUser">update details</button>
+          </div>
+
+          <div class="col-3">
+              <button class="btn btn-primary" (click) = "logout()">logout</button>
+          </div>
+      </div>
+  </div>
+  <div class="jumbotron mt-1">
+    <form [formGroup]="searchForm" (ngSubmit)="search()">
+      <div class="form-row">
+        <div class="form-group col-md-5">
+          <label for="dep">From</label>
+          <input
+            type="text"
+            [class.is-invalid]="
+              searchForm.get('departureAirport').invalid &&
+              searchForm.get('departureAirport').touched
+            "
+            placeHolder="departure Airport"
+            id="dep"
+            class="form-control"
+            formControlName="departureAirport"
+          />
+          <small
+            class="text-danger"
+            *ngIf="
+              searchForm.get('departureAirport').invalid &&
+              searchForm.get('departureAirport').touched
+            "
+            >*mandatory field</small
+          >
+        </div>
+
+        <div class="form-group col-md-5">
+          <label for="ari">To</label>
+          <input
+            type="text"
+            [class.is-invalid]="
+              searchForm.get('arrivalAirport').invalid &&
+              searchForm.get('arrivalAirport').touched
+            "
+            placeHolder="arrival Airport"
+            id="ari"
+            class="form-control"
+            formControlName="arrivalAirport"
+          />
+          <small
+            class="text-danger"
+            *ngIf="
+              searchForm.get('arrivalAirport').invalid &&
+              searchForm.get('arrivalAirport').touched
+            "
+            >*mandatory field</small
+          >
+        </div>
+
+        <div class="form-group col-md-2">
+          <label for="date">Date</label>
+          <input
+            type="date"
+            id="date"
+            class="form-control"
+            formControlName="date"
+          />
+
+          <div
+            *ngIf="
+              searchForm.get('date').invalid && searchForm.get('date').touched
+            "
+          >
+            <small
+              class="text-danger"
+              *ngIf="searchForm.get('date').errors?.dateError"
+              >*date must be greater than current date</small
+            >
+          </div>
+        </div>
+      </div>
+      <div class="form-row">
+        <input
+          [disabled]="!searchForm.valid"
+          type="submit"
+          class="btn btn-primary"
+          value="Search"
+        />
+      </div>
+    </form>
+  </div>
+
+  <h2>{{ notFound }}</h2>
+
+  <div class="jumbotron" align="center" *ngIf="found">
+    <div class="row">
+      <div class="col-6"><h4>Flight Number:</h4></div>
+      <div class="col-6"><h4>{{ flights.flightNumber }}</h4></div>
+    </div>
+
+    <div class="row">
+      <div class="col-6"><h4>From:</h4></div>
+      <div class="col-6"><h4>{{ flights.departureAirport }}</h4></div>
+    </div>
+
+    <div class="row">
+      <div class="col-6"><h4>To:</h4></div>
+      <div class="col-6"><h4>{{ flights.arrivalAirport }}</h4></div>
+    </div>
+
+    <div class="row">
+      <div class="col-6"><h4>Departure date:</h4></div>
+      <div class="col-6"><h4>{{ flights.departureDate }}</h4></div>
+    </div>
+
+    <div class="row">
+      <div class="col-6"><h4>Departure Time:</h4></div>
+      <div class="col-6"><h4>{{ flights.departureTime }}</h4></div>
+    </div>
+    
+    <div class="row">
+      <div class="col-6"><h4>Arrival Date:</h4></div>
+      <div class="col-6"><h4>{{ flights.arrivalDate }}</h4></div>
+    </div>
+
+    <div class="row">
+      <div class="col-6"><h4>Arrival Time:</h4></div>
+      <div class="col-6"><h4>{{ flights.arrivalTime }}</h4></div>
+    </div>
+
+    <div class="row">
+      <div class="col-6"><h4>Cost:</h4></div>
+      <div class="col-6"><h4>{{ flights.cost | currency:'INR' }}</h4></div>
+    </div><br><br>
+
+    <button class="btn btn-primary">make booking</button>
+
+  </div>
+</div>
