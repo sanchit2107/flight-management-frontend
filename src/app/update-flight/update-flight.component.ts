@@ -19,6 +19,7 @@ export class UpdateFlightComponent implements OnInit {
   adminId = null;
   flightNumber = null;
 
+
   flightForm = this.formBuilder.group(
     {
       departureAirport: [null, Validators.required],

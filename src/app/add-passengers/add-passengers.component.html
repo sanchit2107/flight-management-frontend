@@ -1,0 +1,63 @@
+<div class="container">
+
+    <h1 style="text-align: center;" >Add Passengers</h1><br><br>
+
+    <div class="m-2" align="center">
+        <div class="row" >
+            <div class="col-6">
+                <button class="btn btn-success" (click) = "addMorePassengers()">Add More</button>
+            </div>
+            <div class="col-6">
+                <button class="btn btn-primary" routerLink="/userHome">Home</button>
+            </div>
+        </div>
+    </div><br><br>
+
+    <form [formGroup] ="passengerArrayForm">
+
+        <div class="row" formArrayName="passengers">
+
+            <div class="col-12" *ngFor="let group of passengerArray.controls; let i = index;" [formGroupName]="i">
+         
+                <div class="jumbotron p-3">
+                    <div class="row">
+                        <div class="col-12">
+                            <h3>Passenger {{i+1}}</h3>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-4">
+                            <label >Name</label>
+                            <input type="text" class="form-control" [class.is-invalid]="group.controls.name.invalid && group.controls.name.touched" formControlName="name" placeholder="name">
+                            <small class="text-danger" *ngIf="group.controls.name.invalid &&  group.controls.name.touched" >*Mandatory Field</small>
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label >Age</label>
+                            <input type="number" class="form-control" [class.is-invalid]="group.controls.age.invalid && group.controls.age.touched" formControlName="age" placeholder="age">
+                            <div *ngIf="group.controls.age.invalid && group.controls.age.touched">
+                                <small class="text-danger" *ngIf="group.controls.age.errors?.required" >*mandatory Field</small>
+                                <small class="text-danger" *ngIf="group.controls.age.errors?.min || group.controls.age.errors?.max">*age must be between 1 to 100</small>
+                                
+                            </div>
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label >luggage</label>
+                            <input type="number" class="form-control" [class.is-invalid]="group.controls.luggage.invalid && group.controls.luggage.touched" formControlName="luggage" placeholder="luggage">
+                            <div *ngIf="group.controls.luggage.invalid && group.controls.luggage.touched">
+                                <small class="text-danger" *ngIf="group.controls.luggage.errors?.required" >*mandatory Field</small>
+                                <small class="text-danger" *ngIf="group.controls.luggage.errors?.min || group.controls.luggage.errors?.max">*luggage must be between 0 to 15kg</small>
+                            </div>
+                        </div>
+                    </div>
+                    <button  class="btn btn-danger" (click)="removePassenger(i)" >remove</button>
+
+                </div>
+
+            </div>
+        </div>
+        <div align="center">
+            <input [disabled] = "!passengerArrayForm.valid " type="button" (click)="submit()" value="add Booking" class="btn btn-success">
+        </div>
+    </form>
+
+</div>

@@ -22,10 +22,9 @@ export class AdminService {
 
   options = { headers: this.httpHeaders };
 
-  adminLogin(admin): Observable<any> {
-    console.log(JSON.stringify(admin));
+  adminLogin(admin) {
     return this.http
-      .post<any>(
+      .post(
         `${this.baseUrl}/adminLogin`,
         JSON.stringify(admin),
         this.options
@@ -33,9 +32,9 @@ export class AdminService {
       .pipe(catchError(this.errorHandler));
   }
 
-  getAdminDetails(id): Observable<any> {
+  getAdminDetails(id) {
     return this.http
-      .get<any>(`${this.baseUrl}/getAdmin/${id}`)
+      .get(`${this.baseUrl}/getAdmin/${id}`)
       .pipe(catchError(this.errorHandler));
   }
 

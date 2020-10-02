@@ -18,6 +18,9 @@ export class UserLoginComponent implements OnInit {
   failure = { value: false };
   userData = null;
 
+  
+  /* --login form--- */
+
   loginForm = this.formBuilder.group({
     userId: [null, [Validators.required]],
     password: [null, [Validators.required, Validators.minLength(8)]],
@@ -26,6 +29,8 @@ export class UserLoginComponent implements OnInit {
   ngOnInit(): void {
     this.failure.value = false;
   }
+
+  /* -----method for login------- */
 
   submit(){
     this.userService.userLogin(this.loginForm.value).subscribe(

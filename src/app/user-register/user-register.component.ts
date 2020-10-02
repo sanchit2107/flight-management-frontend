@@ -17,6 +17,10 @@ export class UserRegisterComponent implements OnInit {
 
   private userData = null;
 
+
+
+  /* -------register form for user------ */
+
   userRegisterForm = this.formBuilder.group(
     {
       userName: [null, Validators.required],
@@ -45,7 +49,8 @@ export class UserRegisterComponent implements OnInit {
     }
   }
 
-  // to be completed
+  
+  /* ---------function to register-------- */
 
   submit(){
     this.userRegisterForm.removeControl("confirmPassword");
@@ -53,7 +58,6 @@ export class UserRegisterComponent implements OnInit {
       data => {
         this.userData = data;
         localStorage.setItem("userId",this.userData.userId);
-        console.log(localStorage.getItem("userId"));
         this.router.navigate(["/userHome"]);
       },
       error => {

@@ -18,6 +18,8 @@ export class UpdateUserDetailsComponent implements OnInit {
   userId = null;
 
 
+  /* ---- update form------ */
+
   updateForm = this.formBuilder.group(
     {
       userName: [null, Validators.required],
@@ -32,6 +34,9 @@ export class UpdateUserDetailsComponent implements OnInit {
     { validators: this.passwordValidator }
   );
 
+
+
+
   ngOnInit(): void {
     this.userId = localStorage.getItem("userId");
     if (this.userId == null){
@@ -40,6 +45,9 @@ export class UpdateUserDetailsComponent implements OnInit {
       this.userId = parseInt(this.userId);
     }
   }
+
+
+  /* ------password validator------- */  
 
   passwordValidator(control: AbstractControl): { [key: string]: any } | null {
     const pass = control.get("password");
@@ -55,7 +63,6 @@ export class UpdateUserDetailsComponent implements OnInit {
     this.updateForm.removeControl("confirmPassword");
     let data = this.updateForm.value;
     data.userId = this.userId;
-    // console.log(data);
     this.userService.updateUser(data).subscribe(
       data => {
         this.router.navigate(["/userHome"]);
